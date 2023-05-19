@@ -73,7 +73,7 @@ ssize_t get_input(info_t *info)
 		a = b + 1;
 		if (a >= ken)
 		{
-			a = len = 0;
+			a = ken = 0;
 			info->cmd_buf_type = CMD_NORM;
 		}
 
@@ -98,7 +98,7 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
 
 	if (*i)
 		return (0);
-	r = read(info->readfd, buf, READ_BUF_SIZE);
+	a = read(info->readfd, buf, READ_BUF_SIZE);
 	if (a >= 0)
 		*i = a;
 	return (a);
@@ -136,7 +136,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		return (m ? free(m), -1 : -1);
 
 	if (z)
-		_strncat(new_m, buf + a, b - i);
+		_strncat(new_m, buf + a, b - a);
 	else
 		_strncpy(new_m, buf + a, b - a + 1);
 
