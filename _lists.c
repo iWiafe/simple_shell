@@ -7,7 +7,7 @@
  * @num: input 3
  * Return: Always 0
  */
-list_t *add_node(list_t **head, const char *str, int num)
+list_t *add_node(list_t **head, const char *str, int numb)
 {
 	list_t *nh; /*declaration*/
 
@@ -17,7 +17,7 @@ list_t *add_node(list_t **head, const char *str, int num)
 	if (!nh)
 		return (NULL);
 	_memset((void *)nh, 0, sizeof(list_t));
-	nh->num = num;
+	nh->numb = numb;
 	if (str)
 	{
 		nh->str = _strdup(str);
@@ -39,7 +39,7 @@ list_t *add_node(list_t **head, const char *str, int num)
  * @num: input 3
  * Return: Always 0
  */
-list_t *add_node_end(list_t **head, const char *str, int num)
+list_t *add_node_end(list_t **head, const char *str, int numb)
 {
 	list_t *nn, *nd; /*declaration*/
 
@@ -51,7 +51,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	if (!nn)
 		return (NULL);
 	_memset((void *)nn, 0, sizeof(list_t));
-	nn->num = num;
+	nn->numb = numb;
 	if (str)
 	{
 		nn->str = _strdup(str);

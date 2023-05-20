@@ -7,19 +7,19 @@
  */
 char *get_history_file(info_t *info)
 {
-	char *buffer, *direction;
+	char *buf, *direction;
 
 	direction = _getenv(info, "HOME=");
 	if (!direction)
 		return (NULL);
-	buffer = malloc(sizeof(char) * (_strlen(direction) + _strlen(HIST_FILE) + 2));
-	if (!buffer)
+	buf = malloc(sizeof(char) * (_strlen(direction) + _strlen(HIST_FILE) + 2));
+	if (!buf)
 		return (NULL);
-	buffer[0] = 0;
-	_strcpy(buffer, direction);
-	_strcat(buffer, "/");
-	_strcat(buffer, HIST_FILE);
-	return (buffer);
+	buf[0] = 0;
+	_strcpy(buf, direction);
+	_strcat(buf, "/");
+	_strcat(buf, HIST_FILE);
+	return (buf);
 }
 
 /**
@@ -61,7 +61,7 @@ int read_history(info_t *info)
 	int k, endd, counters = 0;
 	ssize_t fdoc, readlen, file_size = 0;
 	struct stat st;
-	char *buffer = NULL, *filename = get_history_file(info);
+	char *buf = NULL, *filename = get_history_file(info);
 
 	if (!filename)
 		return (0);
@@ -74,24 +74,24 @@ int read_history(info_t *info)
 		file_size = st.st_size;
 	if (file_size < 2)
 		return (0);
-	buffer = malloc(sizeof(char) * (file_size + 1));
-	if (!buffer)
+	buf = malloc(sizeof(char) * (file_size + 1));
+	if (!buf)
 		return (0);
-	readlen = read(fdoc, buffer, file_size);
-	buffer[file_size] = 0;
+	readlen = read(fdoc, buf, file_size);
+	buf[file_size] = 0;
 	if (readlen <= 0)
-		return (free(buffer), 0);
+		return (free(buf), 0);
 	close(fdoc);
 	for (k = 0; k < file_size; k++)
-		if (buffer[k] == '\n')
+		if (buf[k] == '\n')
 		{
-			buffer[k] = 0;
-			build_history_list(info, buffer + endd, counters++);
+			buf[k] = 0;
+			build_history_list(info, buf + endd, counters++);
 			endd = k + 1;
 		}
 	if (endd != k)
-		build_history_list(info, buffer + endd, counters++);
-	free(buffer);
+		build_history_list(info, buf + endd, counters++);
+	free(buf);
 	info->histcount = counters;
 	while (info->histcount-- >= HIST_MAX)
 		delete_node_at_index(&(info->history), 0);
@@ -128,13 +128,13 @@ int build_history_list(info_t *info, char *buf, int linecount)
 
 int renumber_history(info_t *info)
 {
-	list_t *n = info->history;
+	list_t *node = info->history;
 	int v = 0;
 
-	while (n)
+	while (node)
 	{
-		n->num = v++;
-		n = n->next;
+		node->numb = v++;
+		node = node->next;
 	}
 	return (info->histcount = v);
 }
