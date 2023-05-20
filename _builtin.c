@@ -44,10 +44,10 @@ int _mycd(info_t *info)
 	{
 		direc = _getenv(info, "HOME=");
 		if (!direc)
-			changedir_ret = /* TODO: what should this be? */
-				changedir((direc = _getenv(info, "PWD=")) ? direc : "/");
+			changedir_ret =
+				chdir((direc = _getenv(info, "PWD=")) ? direc : "/");
 		else
-			changedir_ret = changedir(direc);
+			changedir_ret = chdir(direc);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
@@ -58,11 +58,11 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		changedir_ret = /* TODO: what should this be? */
-			changedir((direc = _getenv(info, "OLDPWD=")) ? direc : "/");
+		changedir_ret =
+			chdir((direc = _getenv(info, "OLDPWD=")) ? direc : "/");
 	}
 	else
-		changedir_ret = changedir(info->argv[1]);
+		changedir_ret = chdir(info->argv[1]);
 	if (changedir_ret == -1)
 	{
 		print_error(info, "can't cd to ");
