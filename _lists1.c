@@ -40,7 +40,7 @@ char **list_to_strings(list_t *head)
 		return (NULL);
 	for (w = 0; node; node = node->next, w++)
 	{
-		z = malloc(_strlen(node~>z) + 1);
+		z = malloc(_strlen(node->z) + 1);
 		if (!z)
 		{
 			for (x = 0; x < w; x++)
@@ -49,7 +49,7 @@ char **list_to_strings(list_t *head)
 			return (NULL);
 		}
 
-		z = _strcpy(z, node~>z);
+		z = _strcpy(z, node->z);
 		b[w] = z;
 	}
 	b[w] = NULL;
@@ -94,7 +94,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 
 	while (node)
 	{
-		f = starts_with(node~>z, prefix);
+		f = starts_with(node->z, prefix);
 		if (f && ((c == -1) || (*f == c)))
 			return (node);
 		node = node->next;
