@@ -57,8 +57,6 @@ typedef struct liststr
  * @path: string path for the current command
  * @argc: argument count
  * @line_count: error count
- * @err_num: error code for exit()s
- * @linecount_flag: if on, count this line of input
  * @fname: program filename
  * @env: the linked list local copy of environ
  * @environ: the custom modified copy of environ from LL env
@@ -70,6 +68,9 @@ typedef struct liststr
  * @cmd_buf_type: CMD_type ||, &&, ;
  * @readfd: fd from which to read line input
  * @histcount: history line number count
+ * @linecount_flag: if on, count this line of input
+ * @err_num: error code for exit()s
+ * @line_count: error count
  */
 typedef struct passinfo
 {
