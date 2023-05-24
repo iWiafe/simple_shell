@@ -99,12 +99,12 @@ typedef struct passinfo
 
 /**
  * struct builtin - function containing a builtin string and related function
- * @builtf: builtin flag command
+ * @type: builtin type
  * @func: function
  */
 typedef struct builtin
 {
-	char *builtf;
+	char *type;
 	int (*func)(info_t *);
 } builtin_table;
 
