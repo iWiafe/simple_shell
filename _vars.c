@@ -78,16 +78,16 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 int replace_alias(info_t *info)
 {
 	int x;/*declaration*/
-	list_t *nd; /*declaration*/
+	list_t *node; /*declaration*/
 	char *y;/*declaration*/
 
 	for (x = 0; x < 10; x++)
 	{
-		nd = node_starts_with(info->alias, info->argv[0], '=');
-		if (!nd)
+		node = node_starts_with(info->alias, info->argv[0], '=');
+		if (!node)
 			return (0);
 		free(info->argv[0]);
-		y = _strchr(nd->str, '=');
+		y = _strchr(node->str, '=');
 		if (!y)
 			return (0);
 		y = _strdup(y + 1);
