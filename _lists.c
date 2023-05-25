@@ -4,7 +4,7 @@
  * add_node - program start
  * @head: input 1
  * @str: input 2
- * @num: input 3
+ * @numb: input 3
  * Return: Always 0
  */
 list_t *add_node(list_t **head, const char *str, int numb)
