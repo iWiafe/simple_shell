@@ -36,7 +36,7 @@ list_t *add_node(list_t **head, const char *str, int numb)
  * add_node_end - main function
  * @head: input 1
  * @str: input 2
- * @num: input 3
+ * @numb: input 3
  * Return: Always 0
  */
 list_t *add_node_end(list_t **head, const char *str, int numb)
