@@ -2,27 +2,26 @@
 
 /**
  * main - main function
- * @av: input 1
- *
- * @ac: imput 2
+ * @ac: input 1
+ * @av: imput 2
  *
  * Return: Always 0
  */
 
 int main(int ac, char **av)
 {
-	info_t information[] = { INFO_INIT }; /*initialization*/
-	int fdoc = 2; /*intialization*/
+	info_t info[] = { INFO_INIT }; /*initialization*/
+	int fd = 2; /*intialization*/
 
 	asm ("mov %1, %0\n\t"
 			"add $3, %0"
-			: "=r" (fdoc)
-			: "r" (fdoc));
+			: "=r" (fd)
+			: "r" (fd));
 
 	if (ac == 2)
 	{
-		fdoc = open(av[1], O_RDONLY); /*file document opens*/
-		if (fdoc == -1)
+		fd = open(av[1], O_RDONLY); /*file document opens*/
+		if (fd == -1)
 		{
 			if (errno == EACCES)
 				exit(126);
@@ -37,10 +36,10 @@ int main(int ac, char **av)
 			}
 			return (EXIT_FAILURE);
 		}
-		information->readfd = fdoc;
+		info->readfd = fd;
 	}
-	populate_env_list(information);
-	read_history(information);
-	hsh(information, av);
+	populate_env_list(info);
+	read_history(info);
+	hsh(info, av);
 	return (EXIT_SUCCESS);
 }

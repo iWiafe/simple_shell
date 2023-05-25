@@ -9,16 +9,16 @@
 
 void clear_info(info_t *info)
 {
-	info->argv = NULL;
-	info->argc = 0;
-	info->path = NULL;
 	info->arg = NULL;
+	info->argv = NULL;
+	info->path = NULL;
+	info->argc = 0;
 }
 
 /**
  * set_info - main entry
- * @av: input
  * @info: input
+ * @av: input
  */
 void set_info(info_t *info, char **av)
 {
@@ -48,10 +48,7 @@ void set_info(info_t *info, char **av)
 
 /**
  * free_info - program start
- *
  * @info: input1
- *
- *
  * @all: input2
  */
 

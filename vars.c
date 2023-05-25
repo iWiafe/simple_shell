@@ -108,7 +108,7 @@ int replace_alias(info_t *info)
 int replace_vars(info_t *info)
 {
 	int c = 0;/*declaration*/
-	list_t *nd;/*declaration*/
+	list_t *node;/*declaration*/
 
 	for (c = 0; info->argv[c]; c++)
 	{
@@ -127,11 +127,11 @@ int replace_vars(info_t *info)
 					_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		nd = node_starts_with(info->env, &info->argv[c][1], '=');
-		if (nd)
+		node = node_starts_with(info->env, &info->argv[c][1], '=');
+		if (node)
 		{
 			replace_string(&(info->argv[c]),
-					_strdup(_strchr(nd->str, '=') + 1));
+					_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
 		replace_string(&info->argv[c], _strdup(""));

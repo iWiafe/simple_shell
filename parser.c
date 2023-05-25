@@ -8,13 +8,13 @@
  */
 int is_cmd(info_t *info, char *path)
 {
-	struct stat x;
+	struct stat st;
 
 	(void)info;
-	if (!path || stat(path, &x))
+	if (!path || stat(path, &st))/*if condition*/
 		return (0);
 
-	if (x.st_mode & S_IFREG)
+	if (st.st_mode & S_IFREG)
 	{
 		return (1);
 	}
@@ -26,19 +26,19 @@ int is_cmd(info_t *info, char *path)
  * @pathstr: input one
  * @start: input two
  * @stop: input three
- * Return: Always 0
+ * Return: Always 0`
  */
 
 char *dup_chars(char *pathstr, int start, int stop)
 {
-	static char buffer[1024];
+	static char buf[1024];
 	int w = 0, g = 0;
 
 	for (g = 0, w = start; w < stop; w++)
 		if (pathstr[w] != ':')
-			buffer[g++] = pathstr[w];
-	buffer[g] = 0;
-	return (buffer);
+			buf[g++] = pathstr[w];
+	buf[g] = 0;
+	return (buf);
 }
 
 /**
