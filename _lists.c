@@ -43,6 +43,7 @@ list_t *add_node_end(list_t **head, const char *str, int numb)
 {
 	list_t *nn, *node; /*declaration*/
 
+	numb = 0;
 	if (!head)
 		return (NULL);
 

@@ -11,7 +11,7 @@
 int main(int ac, char **av)
 {
 	info_t info[] = { INFO_INIT }; /*initialization*/
-	int fd = 2; /*intialization*/
+	int fd = 0; /*intialization*/
 
 	asm ("mov %1, %0\n\t"
 			"add $3, %0"

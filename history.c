@@ -58,7 +58,7 @@ int write_history(info_t *info)
  */
 int read_history(info_t *info)
 {
-	int k, endd, counters = 0;
+	int k = 0, endd = 0, counters = 0;
 	ssize_t fdoc, readlen, file_size = 0;
 	struct stat st;
 	char *buf = NULL, *filename = get_history_file(info);
@@ -111,6 +111,7 @@ int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *n = NULL;
 
+	linecount = 0;
 	if (info->history)
 		n = info->history;
 	add_node_end(&n, buf, linecount);
